@@ -92,18 +92,16 @@ public class AIPlayer extends Player{
 					Out.add(0.0);
 				}
 			}
-			if (Out.contains(1.0)){
-				b.setBoard(opt.get(Out.indexOf(1.0)));
-				maxValue(b);
+			double highest = Out.get(0);
+			int index = 0;
+			for(int j = 0; j< Out.size(); j++){
+				if (Out.get(j) > highest){
+					highest = Out.get(j);
+					index = j;
+				}
 			}
-			else if (Out.contains(0.0)){
-				b.setBoard(opt.get(Out.indexOf(0.0)));
-				maxValue(b);
-			}
-			else{
-				b.setBoard(opt.get(Out.indexOf(-1.0)));
-				maxValue(b);
-			}
+			b.setBoard(opt.get(index));
+			Val = minValue(b);
 		}
 		return Val;
 	}
@@ -132,18 +130,16 @@ public class AIPlayer extends Player{
 					Out.add(0.0);
 				}
 			}
-			if (Out.contains(1.0)){
-				b.setBoard(opt.get(Out.indexOf(1.0)));
-				maxValue(b);
+			double lowest = Out.get(0);
+			int index = 0;
+			for(int j = 0; j< Out.size(); j++){
+				if (Out.get(j) < lowest){
+					lowest = Out.get(j);
+					index = j;
+				}
 			}
-			else if (Out.contains(0.0)){
-				b.setBoard(opt.get(Out.indexOf(0.0)));
-				maxValue(b);
-			}
-			else{
-				b.setBoard(opt.get(Out.indexOf(-1.0)));
-				maxValue(b);
-			}
+			b.setBoard(opt.get(index));
+			Val = maxValue(b);
 		}
 		return Val;
 	}
